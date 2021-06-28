@@ -15,9 +15,8 @@ export class UsersService {
     return createdUser.save();
   }
 
-  findOne(createUserDto: CreateUserDto) {
-    const {email, password} = createUserDto;
-    const filter = { email, password}
+  findOne(email: string) {
+    const filter = { email }
     return this.userModel.findOne(filter);;
   }
 
