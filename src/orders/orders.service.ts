@@ -2,8 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateOrderDto } from './dto/create-order.dto';
-import { UpdateOrderDto } from './dto/update-order.dto';
-import { OrderClass } from './entities/order.entity';
 import { OrderDocument, Order } from './schemas/orders.schema';
 import * as mongoose from 'mongoose';
 
