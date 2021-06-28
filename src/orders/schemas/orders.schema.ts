@@ -10,9 +10,6 @@ export type OrderDocument = Order & Document;
 @Schema()
 export class Order {
     @Prop()
-    _id: mongoose.Schema.Types.ObjectId;
-
-    @Prop()
     title: string;
     
     @Prop()
@@ -21,7 +18,8 @@ export class Order {
     @Prop()
     status: string;
 
-    @Prop()
+    // No se como
+    @Prop([Sender])
     sender: Sender;
 
     @Prop()
@@ -33,7 +31,8 @@ export class Order {
     @Prop()
     destinationCountry: string;
 
-    @Prop()
+    // No se como
+    @Prop([DestinationCoordinates])
     destinationCoordinates: DestinationCoordinates;
 
     @Prop()

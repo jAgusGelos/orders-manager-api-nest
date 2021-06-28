@@ -1,7 +1,7 @@
 import { DestinationCoordinates } from './dCoordinates.entity';
 import { Sender } from './sender.entity';
 
-export class Order {
+export class OrderClass {
   _id: string;
   title: string;
   description: string;
