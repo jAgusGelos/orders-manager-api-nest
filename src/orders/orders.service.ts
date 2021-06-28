@@ -5,6 +5,7 @@ import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { OrderClass } from './entities/order.entity';
 import { OrderDocument, Order } from './schemas/orders.schema';
+import * as mongoose from 'mongoose';
 
 @Injectable()
 export class OrdersService {
@@ -20,15 +21,19 @@ export class OrdersService {
     return this.orderModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} order`;
+  async findOne(id: mongoose.Types.ObjectId): Promise<Order> {
+    return this.orderModel.findById(id).exec();
   }
 
-  update(id: number, updateOrderDto: UpdateOrderDto) {
-    return `This action updates a #${id} order`;
+  async update(id: mongoose.Types.ObjectId, updateOrderDto: CreateOrderDto): Promise<Order> {
+    const filter = { _id: id }
+    return this.orderModel.findOneAndUpdate(filter,updateOrderDto, {new: true}).exec();
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} order`;
+  remove(id: mongoose.Types.ObjectId){
+    return this.orderModel.findByIdAndDelete(id);
+    
+    
+    
   }
 }

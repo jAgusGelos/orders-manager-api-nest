@@ -9,6 +9,8 @@ export type OrderDocument = Order & Document;
 
 @Schema()
 export class Order {
+
+
     @Prop()
     title: string;
     

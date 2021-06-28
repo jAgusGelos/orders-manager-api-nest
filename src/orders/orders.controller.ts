@@ -10,6 +10,8 @@ import {
 import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
+import * as mongoose from 'mongoose';
+
 
 @Controller('orders')
 export class OrdersController {
@@ -27,16 +29,19 @@ export class OrdersController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.ordersService.findOne(+id);
+    const newId = mongoose.Types.ObjectId(id);
+    return this.ordersService.findOne(newId);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() createOrderDto: CreateOrderDto) {
-    return this.ordersService.update(+id, createOrderDto);
+    const newId = mongoose.Types.ObjectId(id);
+    return this.ordersService.update(newId, createOrderDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.ordersService.remove(+id);
+    const newId = mongoose.Types.ObjectId(id);
+    return this.ordersService.remove(newId);
   }
 }
