@@ -23,6 +23,7 @@
   "dependencies": {
     "@nestjs/common": "^7.6.15",
     "@nestjs/core": "^7.6.15",
+    "@nestjs/jwt": "^7.2.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/mongoose": "^7.2.4",
     "@nestjs/passport": "^7.1.5",
@@ -31,7 +32,9 @@
     "mongoose": "^5.12.14",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "pre-commit": "^1.2.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.6",
@@ -64,6 +67,10 @@
     "webpack": "^5.40.0",
     "webpack-node-externals": "^3.0.0"
   },
+  "pre-commit": [
+    "format",
+    "lint"
+  ],
   "jest": {
     "moduleFileExtensions": [
       "js",

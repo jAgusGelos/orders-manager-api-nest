@@ -14,6 +14,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     if (!user) {
       throw new UnauthorizedException();
     }
+    // If a user is found and the credentials are valid, the user is returned so Passport can complete its task
     return user;
   }
 }

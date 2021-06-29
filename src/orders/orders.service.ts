@@ -7,8 +7,9 @@ import * as mongoose from 'mongoose';
 
 @Injectable()
 export class OrdersService {
-
-  constructor(@InjectModel(Order.name) private orderModel: Model<OrderDocument>) {}
+  constructor(
+    @InjectModel(Order.name) private orderModel: Model<OrderDocument>,
+  ) {}
 
   async create(createOrderDto: CreateOrderDto): Promise<Order> {
     const createdOrder = new this.orderModel(createOrderDto);
@@ -23,15 +24,17 @@ export class OrdersService {
     return this.orderModel.findById(id).exec();
   }
 
-  async update(id: mongoose.Types.ObjectId, updateOrderDto: CreateOrderDto): Promise<Order> {
-    const filter = { _id: id }
-    return this.orderModel.findOneAndUpdate(filter,updateOrderDto, {new: true}).exec();
+  async update(
+    id: mongoose.Types.ObjectId,
+    updateOrderDto: CreateOrderDto,
+  ): Promise<Order> {
+    const filter = { _id: id };
+    return this.orderModel
+      .findOneAndUpdate(filter, updateOrderDto, { new: true })
+      .exec();
   }
 
-  remove(id: mongoose.Types.ObjectId){
+  remove(id: mongoose.Types.ObjectId) {
     return this.orderModel.findByIdAndDelete(id);
-    
-    
-    
   }
 }

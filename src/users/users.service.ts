@@ -7,17 +7,16 @@ import { UserDocument, User } from './schemas/user.schema';
 
 @Injectable()
 export class UsersService {
-
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
-  
+
   create(createUserDto: CreateUserDto) {
     const createdUser = new this.userModel(createUserDto);
     return createdUser.save();
   }
 
   findOne(email: string) {
-    const filter = { email }
-    return this.userModel.findOne(filter);;
+    const filter = { email };
+    return this.userModel.findOne(filter);
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
