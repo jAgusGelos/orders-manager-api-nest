@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserDocument, User } from './schemas/user.schema';
+import * as mongoose from 'mongoose';
 
 @Injectable()
 export class UsersService {
@@ -14,13 +15,15 @@ export class UsersService {
     return createdUser.save();
   }
 
-  findOne(email: string) {
-    const filter = { email };
+  findOne(id: string) {
+    const _id = mongoose.Types.ObjectId(id);
+    const filter = { _id };
     return this.userModel.findOne(filter);
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  update(id: string, updateUserDto: UpdateUserDto) {
+    const _id = mongoose.Types.ObjectId(id);
+    return this.userModel.findOneAndUpdate({ _id }, updateUserDto);
   }
 
   remove(id: number) {

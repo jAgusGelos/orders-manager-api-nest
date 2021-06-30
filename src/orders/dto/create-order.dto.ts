@@ -1,12 +1,11 @@
-import * as mongoose from 'mongoose';
 import { DestinationCoordinates } from '../entities/dCoordinates.entity';
-import { Sender } from '../entities/sender.entity';
+import * as mongoose from 'mongoose';
 
 export class CreateOrderDto {
   title: string;
   description: string;
   status: string;
-  sender: Sender;
+  sender: mongoose.Schema.Types.ObjectId;
   destinationAddress: string;
   destinationCity: string;
   destinationCountry: string;

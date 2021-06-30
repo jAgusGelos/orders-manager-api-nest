@@ -17,7 +17,7 @@ export class OrdersService {
   }
 
   findAll(): Promise<Order[]> {
-    return this.orderModel.find().exec();
+    return this.orderModel.find().populate({ path: 'users' }).exec();
   }
 
   async findOne(id: mongoose.Types.ObjectId): Promise<Order> {
@@ -29,8 +29,10 @@ export class OrdersService {
     updateOrderDto: CreateOrderDto,
   ): Promise<Order> {
     const filter = { _id: id };
+    let order = new Order();
+    order = updateOrderDto;
     return this.orderModel
-      .findOneAndUpdate(filter, updateOrderDto, { new: true })
+      .findOneAndUpdate(filter, order, { new: true })
       .exec();
   }
 

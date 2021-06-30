@@ -1,4 +1,6 @@
 export class Sender {
-  id: number;
-  name: string;
+  phone: string;
+  address: Array<string>;
+  email: string;
+  password: string;
 }
