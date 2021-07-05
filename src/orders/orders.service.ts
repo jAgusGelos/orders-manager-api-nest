@@ -17,7 +17,7 @@ export class OrdersService {
   }
 
   findAll(): Promise<Order[]> {
-    return this.orderModel.find().populate({ path: 'users' }).exec();
+    return this.orderModel.find().populate('sender').exec();
   }
 
   async findOne(id: mongoose.Types.ObjectId): Promise<Order> {

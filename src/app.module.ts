@@ -5,13 +5,12 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { AppController } from './app.controller';
 import { DispatchModule } from './dispatch/dispatch.module';
+import { environment } from 'develop.env';
 
 @Module({
   imports: [
     OrdersModule,
-    MongooseModule.forRoot(
-      'mongodb+srv://admin:admin@cluster0.g4u4c.mongodb.net/orders-manager?retryWrites=true&w=majority',
-    ),
+    MongooseModule.forRoot(environment.MONGODB_CONNECTION),
     AuthModule,
     UsersModule,
     DispatchModule,

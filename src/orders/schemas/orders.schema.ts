@@ -2,6 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { DestinationCoordinates } from '../entities/dCoordinates.entity';
 import * as mongoose from 'mongoose';
+import { User } from 'src/users/schemas/user.schema';
 
 export type OrderDocument = Order & Document;
 
@@ -16,7 +17,7 @@ export class Order {
   @Prop()
   status: string;
 
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }] })
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: User.name })
   sender: mongoose.Schema.Types.ObjectId;
 
   @Prop()
